@@ -15,7 +15,7 @@
 using namespace std;
 
 int main() {
-    rand(time(0));
+    srand(time(0));
     vector<int> v;
     vectorutil::fill_range(v, 1000);
     vectorutil::shuffle(v);
