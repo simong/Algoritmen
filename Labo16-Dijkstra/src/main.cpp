@@ -9,7 +9,7 @@
 
 using namespace std;
 int main() {
-    cout << "Foo" << endl;
+    test_dijkstra();
 
     return 0;
 }

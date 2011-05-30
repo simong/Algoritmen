@@ -48,6 +48,7 @@ public:
     // (geen override)
     virtual int voeg_verbinding_toe(int van, int naar, T w)
     {
+        // t is het verbindings nr (aka aantal verbindingen.)
 		int t = Graaf<TYPE>::voeg_verbinding_toe(van, naar);	// throws
         //assert( t == gewichten.size() );
         gewichten.push_back(w);
