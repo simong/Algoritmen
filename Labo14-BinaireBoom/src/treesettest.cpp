@@ -20,22 +20,30 @@ int main() {
 
     TreeSet<int> s;
     s.add(25);
-    s.add(9);
     s.add(1);
     s.add(4);
     s.add(7);
+    s.add(9);
     s.add(14);
     s.add(21);
     s.add(17);
     s.add(40);
     s.add(33);
     s.add(57);
+    s.add(45);
+    try {
+        std::cout << "K-de kleinste: " << s.k_de_kleinste(11) << std::endl;
+        return 0;
+    } catch (char* e) {
+        std::cout << e << std::endl;
+        return 1;
+    }
 
     /*
-    for (TreeSetIterator<int> it = s.begin(); it != s.end(); it++) {
-        std::cout << *it << std::endl;
-    }
-    */
+     for (TreeSetIterator<int> it = s.begin(); it != s.end(); it++) {
+     std::cout << *it << std::endl;
+     }
+     */
 
     ut_start_check_throw();
         TreeSet<int> set;

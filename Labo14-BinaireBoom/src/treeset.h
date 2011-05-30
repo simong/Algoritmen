@@ -29,8 +29,6 @@ private:
 };
 */
 
-struct OutOfRangeException {
-};
 
 // Set-implementatie gebaseerd op binaire zoekboom.
 // Gebruikt natuurlijke orde operator<(T,T).
@@ -188,9 +186,9 @@ int TreeSet<T>::size() {
 template<typename T>
 T TreeSet<T>::k_de_kleinste(int n) const {
     if (wortel != 0)
-        wortel->k_de_kleinste(n);
+        return wortel->k_de_kleinste(n);
 
-    throw new OutOfRangeException;
+    throw "Out of range (set)";
 }
 #endif	
 

@@ -28,6 +28,7 @@ private:
     Knoop* rechts;
     T data;
     bool removed;
+    int aantal;
 
     //template<typename U>
     //friend class TreeSetIterator;
@@ -40,7 +41,7 @@ private:
 
 template<typename T>
 Knoop<T>::Knoop(const T& x) :
-    links(0), rechts(0), data(x), removed(false) {
+    links(0), rechts(0), data(x), removed(false), aantal(1) {
 }
 
 template<typename T>
@@ -102,13 +103,20 @@ bool Knoop<T>::add(const T& x) {
 
 template<typename T>
 bool Knoop<T>::remove(const T& x) {
+    bool deleted = false;
     if (x < data && links != 0)
-        return links->remove(x);
+        deleted = links->remove(x);
     else if (data < x && rechts != 0)
-        return rechts->remove(x);
+        deleted = rechts->remove(x);
 
-    else if (x == data)
+    else if (x == data) {
         removed = true;
+        deleted = true;
+    }
+
+    if (deleted) {
+        aantal--;
+    }
 
     return removed;
 }
@@ -128,19 +136,25 @@ void Knoop<T>::visit(V& visitor) {
 
 template<typename T>
 T Knoop<T>::k_de_kleinste(int n) const {
-    if (links != 0 && links.aantal < n)
+
+
+    if (links != 0 && n <= links->aantal)
         return links->k_de_kleinste(n);
     if (links != 0)
-        n = n - links.aantal;
+        n = n - links->aantal;
+
+
+
+    if (n == 1)
+        return data; // Deze knoop
+
     n--;
 
-    if (n == 0)
-        return data; // Deze knoop
 
     if (rechts != 0)
         return rechts->k_de_kleinste(n);
 
-    throw new OutOfRangeException;
+    throw "OutOfRange";
 }
 
 #endif /* KNOOP_H_ */
