@@ -1,2 +1,4 @@
 debug/
-Debug
+Debug/
+.project
+.cproject
