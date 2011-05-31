@@ -119,16 +119,17 @@ void Heap<T>::push(T x) {
         throw CapacityExceeded();
 
     // Achteraan toevoegen
-    int k = aantal + 1;
-    data[k] = x;
+    int pos = aantal + 1;
     aantal++;
 
     // Boom van beneden naar omhoog fixen.
-    int ouder = k / 2;
+    int ouder = pos / 2;
     // Zolang dat de ouder kleiner is, swappen
-    while (ouder >= 1 && cmp(data[ouder], data[k])) {
-        swap(data[ouder], data[k]);
-        k = ouder;
+    while (ouder >= 1 && cmp(data[ouder], x)) {
+        data[pos] = data[ouder];
+        pos = ouder;
         ouder = ouder / 2;
     }
+    data[pos] = x;
+
 }

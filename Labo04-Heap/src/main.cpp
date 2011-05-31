@@ -28,8 +28,10 @@ bool sortcheck(int aantal) {
     std::sort(v2.begin(), v2.end());
 
     // Heapify de eerste vector.
-    LessComparer<int> lessCmp;
-    Heap<int> h(v1, lessCmp);
+    Heap<int> h(v1.size());
+    for (unsigned int i = 0; i < v1.size();i++) {
+        h.push(v1[i]);
+    }
 
     // Maak vector door telkens te poppen.
     vector<int> v3;
@@ -50,7 +52,7 @@ bool sortcheck(int aantal) {
 int main() {
     //heap_test();
 
-    bool b = sortcheck(8);
+    bool b = sortcheck(1000);
     if (!b)
         cout << "Niet gesorteerd!";
     else
