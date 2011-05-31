@@ -17,13 +17,14 @@ using namespace std;
 int main() {
     srand(time(0));
     vector<int> v;
-    vectorutil::fill_range(v, 1000);
+    vectorutil::fill_range(v, 50);
     vectorutil::shuffle(v);
+    vectorutil::print(v);
 
     vector<int> v2 = v;
     sort(v2.begin(), v2.end());
 
-    merge_sort(v);
+    merge_sort_bottom_up(v);
 
     bool b = (v2 == v);
     //bool b = vectorutil::is_ordered(v);
@@ -31,6 +32,9 @@ int main() {
         cout << "Success";
     else
         cout << "Failed";
+    cout << endl;
+
+    vectorutil::print(v);
 
     return 0;
 }

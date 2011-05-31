@@ -8,10 +8,45 @@
 #ifndef MERGESORT_H_
 #define MERGESORT_H_
 
-#include<vector>
+#include <vector>
+
+/**
+ * Merged de tabel [l, r[
+ */
+template<typename T>
+void merge_sort_top_down(std::vector<T>& v, std::vector<T>& h, unsigned int l,
+        unsigned int r) {
+    // Stopconditie
+    if (l < r) {
+        // Deel de tabel in 2.
+        unsigned int m = l + (r - l) / 2;
+        unsigned int lengte = v.size() - 1;
+        m = std::min(m, lengte);
+        r = std::min(r, lengte);
+
+        // Eigenlijk is top down merge sort een implementatie van bottom up.
+        // Er wordt eerst helemaal afgedaald naar beneden en door de recursie
+        // worden deze dan samengevoegd.
+        merge_sort_top_down(v, h, l, m);
+        merge_sort_top_down(v, h, m + 1, r);
+        // De merge is [l, m[ Daarom +1 voor de recht grens..
+        merge(v, h, l, m + 1, r + 1);
+    }
+
+}
 
 template<typename T>
-void merge_sort(std::vector<T>& v) {
+void merge_sort_top_down(std::vector<T>& v) {
+    /*
+     * Tabellen opdelen in 2, tot er maar 0 of 1 meer in zit.
+     */
+    std::vector<T> h;
+    h.reserve(v.size());
+    merge_sort_top_down(v, h, 0, v.size());
+}
+
+template<typename T>
+void merge_sort_bottom_up(std::vector<T>& v) {
 
     /**
      * De tabel wordt gesorteerd door telkens groter wordende deeltabellen te mergen.
@@ -34,8 +69,8 @@ void merge_sort(std::vector<T>& v) {
          * en mergen ze
          */
         for (unsigned int l = 0; l < v.size(); l += 2 * k) {
-            unsigned int r = (l + 2 * k < v.size()) ? l + 2 * k : v.size();
-            unsigned int m = (l + k < v.size()) ? l + k : v.size();
+            unsigned int m = std::min(l + k, (unsigned int) v.size());
+            unsigned int r = std::min(l + 2 * k, (unsigned int) v.size());
             merge(v, h, l, m, r);
         }
 
