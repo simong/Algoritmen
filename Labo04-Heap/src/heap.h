@@ -21,10 +21,21 @@ struct CapacityExceeded {
 };
 
 template<typename T>
+struct Comparer {
+    bool operator()(const T a, const T b) {
+        return a > b;
+    }
+};
+
+template<typename T>
 class Heap {
 public:
     // maak nieuwe (lege) heap met gegeven capaciteit
     Heap(uint capaciteit_);
+
+    // Maakt een heap van een bestaande collectie
+    // Voor het gemak een vector.
+    Heap(std::vector<T>& v, Comparer<T>& cmp_);
 
     ~Heap();
 
@@ -53,6 +64,10 @@ private:
     int capaciteit;
     T* data;
     int aantal;
+    Comparer<T> cmp;
+
+    // Fixed een boom waarvan de "wortel" op positie k zit.
+    void fix_top_down(int k);
 };
 
 #endif

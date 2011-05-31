@@ -5,6 +5,7 @@
  *      Author: simon
  */
 #include <iostream>
+#include <vector>
 #include "heap.h"
 
 using namespace std;
@@ -13,6 +14,19 @@ template<typename T>
 Heap<T>::Heap(uint capaciteit_) :
     capaciteit(capaciteit_), aantal(0) {
     data = new T[capaciteit_ + 1];
+}
+
+template<typename T>
+Heap<T>::Heap(std::vector<T>& v, Comparer<T>& cmp_) :
+    capaciteit(v.size()), aantal(v.size()), cmp(cmp_) {
+    data = new T[v.size() + 1];
+    for (unsigned int i = 1; i <= v.size(); i++) {
+        data[i] = v[i - 1];
+    }
+
+    for (int i = 4; i >= 1; i--) {
+        fix_top_down(i);
+    }
 }
 
 template<typename T>
@@ -63,9 +77,11 @@ void Heap<T>::pop() {
     swap(data[1], data[aantal]);
     aantal--;
 
-    // Boom van boven naar beneden fixen
-    int k = 1;
-
+    fix_top_down(1);
+}
+// Boom van boven naar beneden fixen
+template<typename T>
+void Heap<T>::fix_top_down(int k) {
     // Zolang er een linkerkind is checken we..
     int kindA = 2 * k;
     int kindB = kindA + 1;
@@ -73,12 +89,12 @@ void Heap<T>::pop() {
         int sw = k;
 
         // Als het linkerkind groter is dan de wortel, swappen we
-        if (data[k] < data[kindA])
+        if (cmp(data[k], data[kindA]))
             sw = kindA;
 
         // Als er een rechterkind bestaat dat groter is dan hetgeen waar we gaan mee swappen
         // Swap dan met kind rechtse kind
-        if (kindB <= aantal && data[sw] < data[kindB])
+        if (kindB <= aantal && cmp(data[sw], data[kindB]))
             sw = kindB;
 
         // Swap
@@ -93,7 +109,6 @@ void Heap<T>::pop() {
             break;
         }
     }
-
 }
 
 // voeg een element x toe
@@ -111,7 +126,7 @@ void Heap<T>::push(T x) {
     // Boom van beneden naar omhoog fixen.
     int ouder = k / 2;
     // Zolang dat de ouder kleiner is, swappen
-    while (ouder >= 1 && data[ouder] < data[k]) {
+    while (ouder >= 1 && cmp(data[ouder], data[k])) {
         swap(data[ouder], data[k]);
         k = ouder;
         ouder = ouder / 2;

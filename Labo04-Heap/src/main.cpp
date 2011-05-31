@@ -14,31 +14,43 @@
 
 using namespace std;
 
+template<typename T>
+struct LessComparer: public Comparer<T> {
+    virtual bool operator()(const T a, const T b) {
+        return a > b;
+    }
+};
+
 bool sortcheck(int aantal) {
     vector<int> v1;
-    vectorutil::fill_random(v1, aantal, -50, 50);
+    vectorutil::fill_random(v1, aantal, 0, 50);
     vector<int> v2 = v1;
     std::sort(v2.begin(), v2.end());
 
     // Heapify de eerste vector.
-    Heap<int> h(aantal);
-    for (int i = 0; i < v1.size(); i++)
-        h.push(v1[i]);
+    LessComparer<int> lessCmp;
+    Heap<int> h(v1, lessCmp);
 
     // Maak vector door telkens te poppen.
-    vector<int> v3(v1.size());
+    vector<int> v3;
+    v3.reserve(aantal);
     while (!h.is_empty()) {
         v3.push_back(h.top());
         h.pop();
     }
+
+    vectorutil::print(v1);
+    vectorutil::print(v2);
+    vectorutil::print(v3);
+
     return v2 == v3;
 
 }
 
 int main() {
-    heap_test();
+    //heap_test();
 
-    bool b = sortcheck(1000);
+    bool b = sortcheck(8);
     if (!b)
         cout << "Niet gesorteerd!";
     else
