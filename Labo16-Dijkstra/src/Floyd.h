@@ -16,7 +16,7 @@ int floyd() {
             ouders[i][j] = -1;
             if (i == j) {
                 graph[i][j] = 0; // No distance from a node to that same node
-                ouders[i][j] = 0;
+                ouders[i][j] = j;
             }
         }
     }
@@ -27,7 +27,18 @@ int floyd() {
         int x, y, d;
         cin >> x >> y >> d;
         graph[x - 1][y - 1] = graph[y - 1][x - 1] = d;
+        ouders[x - 1][y - 1] = x - 1;
+        ouders[y - 1][x - 1] = y - 1;
     }
+
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << ouders[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 
     // Kortste pad berekenen.
     for (int k = 0; k < N; k++) {
@@ -39,7 +50,7 @@ int floyd() {
                 int kost = graph[i][k] + graph[k][j];
                 if (kost < graph[i][j]) {
                     // Kortere weg gevonden.
-                    ouders[i][j] = k;
+                    ouders[i][j] = ouders[k][j];
                     graph[i][j] = kost;
                 }
             }
@@ -49,15 +60,23 @@ int floyd() {
     cout << "Start?" << endl;
     while (true) { // Prints out the shortest distances between nodes until the program is terminated
         cin >> start >> end;
+        cout << endl;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                cout << ouders[i][j] << " ";
+            }
+            cout << endl;
+        }
         int i = start - 1;
         int j = end - 1;
         cout << graph[i][j] << endl;
         cout << "Pad: " << end << " ";
-        while (j != i) {
-            int k = ouders[i][j];
-            //cout << k << " ";
-            j = k;
-        }
+
+         while (j != i) {
+         int k = ouders[i][j];
+             cout << j << " ";
+             j = k;
+         }
         cout << start;
     }
     return 0;
