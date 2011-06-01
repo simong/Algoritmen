@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -31,15 +32,6 @@ int floyd() {
         ouders[y - 1][x - 1] = y - 1;
     }
 
-
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << ouders[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-
     // Kortste pad berekenen.
     for (int k = 0; k < N; k++) {
         for (int i = 0; i < N; i++) {
@@ -58,26 +50,25 @@ int floyd() {
     }
 
     cout << "Start?" << endl;
-    while (true) { // Prints out the shortest distances between nodes until the program is terminated
+    while (true) {
         cin >> start >> end;
-        cout << endl;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                cout << ouders[i][j] << " ";
-            }
-            cout << endl;
-        }
+
+        // ZERO BASED
         int i = start - 1;
         int j = end - 1;
-        cout << graph[i][j] << endl;
-        cout << "Pad: " << end << " ";
 
-         while (j != i) {
-         int k = ouders[i][j];
-             cout << j << " ";
-             j = k;
-         }
-        cout << start;
+        // Pad achterwaarts ophalen (dus in stack)
+        stack<int> st;
+        while (i != j) {
+            int k = ouders[i][j];
+            j = k;
+            st.push(j + 1);
+        }
+        cout << "Pad: " << end << " ";
+        while (!st.empty()) {
+            cout << st.top() << " ";
+            st.pop();
+        }
     }
     return 0;
 }
