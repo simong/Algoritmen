@@ -49,19 +49,6 @@ int floyd() {
     cout << "Start?" << endl;
     while (true) { // Prints out the shortest distances between nodes until the program is terminated
         cin >> start >> end;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                cout << graph[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << endl;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                cout << ouders[i][j] << " ";
-            }
-            cout << endl;
-        }
         int i = start - 1;
         int j = end - 1;
         cout << graph[i][j] << endl;
