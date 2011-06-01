@@ -21,7 +21,7 @@ int floyd() {
         }
     }
 
-    cout << "Kost" << endl;
+    cout << "Kost?" << endl;
     // Kost per verbinding.
     for (int i = 0; i < E; i++) {
         int x, y, d;
@@ -29,9 +29,13 @@ int floyd() {
         graph[x - 1][y - 1] = graph[y - 1][x - 1] = d;
     }
 
+    // Kortste pad berekenen.
     for (int k = 0; k < N; k++) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
+
+                // graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+
                 int kost = graph[i][k] + graph[k][j];
                 if (kost < graph[i][j]) {
                     // Kortere weg gevonden.
