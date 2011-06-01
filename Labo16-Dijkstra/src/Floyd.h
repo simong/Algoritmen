@@ -17,7 +17,7 @@ int floyd() {
             ouders[i][j] = -1;
             if (i == j) {
                 graph[i][j] = 0; // No distance from a node to that same node
-                ouders[i][j] = j;
+                ouders[i][j] = 0;
             }
         }
     }
