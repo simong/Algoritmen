@@ -60,10 +60,9 @@ void genereer_test() {
 
 }
 
-
-int main(int argc, const char * argv[]) {
-    // genereer_test();
-
+void simple_test() {
+    /*
+     * uncomment constructors..
     point p1(10, 10);
     point p2(20, 20);
     point p3(30, 30);
@@ -79,5 +78,11 @@ int main(int argc, const char * argv[]) {
 
     tree.write();
     cout << "Done" << std::endl;
+    */
+}
+
+int main(int argc, const char * argv[]) {
+    genereer_test();
+    //simple_test();
 }
 

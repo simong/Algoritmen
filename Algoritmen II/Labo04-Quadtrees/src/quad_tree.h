@@ -7,12 +7,14 @@
 struct point {
     double x;
     double y;
-    point() {
+    /*
+    point() : x(0), y(0){
     }
 
     point(double x, double y)
             : x(x), y(y) {
     }
+    */
 };
 
 struct vertex {
