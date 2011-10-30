@@ -12,7 +12,7 @@ point generate(unsigned int i) {
     return p;
 }
 
-int main(int argc, const char * argv[]) {
+void genereer_test() {
 
     // Paar puntjes genereren
     unsigned int max = 131073;
@@ -58,5 +58,26 @@ int main(int argc, const char * argv[]) {
 
     cout << "Done" << endl;
 
+}
+
+
+int main(int argc, const char * argv[]) {
+    // genereer_test();
+
+    point p1(10, 10);
+    point p2(20, 20);
+    point p3(30, 30);
+    point p4(40, 40);
+
+    quad_tree tree;
+    tree.add(p1);
+    tree.add(p2);
+    tree.add(p3);
+    tree.add(p4);
+
+    tree.remove(p1);
+
+    tree.write();
+    cout << "Done" << std::endl;
 }
 
