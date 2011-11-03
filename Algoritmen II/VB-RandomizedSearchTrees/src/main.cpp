@@ -13,8 +13,12 @@ int main() {
     for (int i = 0; i < MAX; i++) {
         assert(treap.contains(i));
     }
-
     assert(treap.contains(MAX+1) == false);
+
+    assert(treap.remove(7));
+    assert(treap.contains(7) == false);
+
+    std::cout << "Finished succesfully." << std::endl;
 
     return 0;
 }
