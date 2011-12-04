@@ -69,7 +69,7 @@ int main() {
     const uchar text[] = "abeta beta charly alfa";
     const uchar pattern[] = "beta";
 
-    int loc = search(text, 21, pattern, 4);
+    int loc = search(text, 23, pattern, 4);
     std::cout << loc;
 
     return 0;
