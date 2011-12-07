@@ -9,18 +9,17 @@ int calc_prefix(std::string& s, unsigned int i, std::vector<unsigned int>& prefi
 
     int pi = prefixes[i - 1];
     while (pi != 0) {
-        if (s[pi ] == s[i ])
+        if (s[pi] == s[i])
             return pi + 1;
         else
-            pi = prefixes[pi -1 ];
+            pi = prefixes[pi - 1];
     }
 
-    if (s[pi ] == s[i ])
+    if (s[pi] == s[i])
         return pi + 1;
     else
         return pi;
 }
-
 
 vector<unsigned int> prefix(std::string s) {
     vector<unsigned int> prefixes(s.size());
@@ -30,4 +29,33 @@ vector<unsigned int> prefix(std::string s) {
     }
 
     return prefixes;
+}
+
+unsigned int calc_suffix(std::string& s, unsigned int i,
+        std::vector<unsigned int>& suffixes) {
+    if (i == s.size() - 1)
+        return 0;
+
+    unsigned int pi = suffixes[i + 1];
+    while (pi != 0) {
+        if (s[s.size() - pi -1] == s[i])
+            return pi + 1;
+        else
+            pi = suffixes[s.size() - pi + 1];
+    }
+
+    if (s[s.size() - pi-1] == s[i])
+        return pi + 1;
+    else
+        return pi;
+}
+
+vector<unsigned int> suffix(std::string s) {
+    vector<unsigned int> suffixes(s.size());
+
+    for (int i = s.size() - 1; i >= 0; i--) {
+        suffixes[i] = calc_suffix(s, i, suffixes);
+    }
+
+    return suffixes;
 }

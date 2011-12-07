@@ -3,3 +3,5 @@ Debug/
 .project
 .cproject
 .settings
+.DS_Store
+*.xcodeproj/
