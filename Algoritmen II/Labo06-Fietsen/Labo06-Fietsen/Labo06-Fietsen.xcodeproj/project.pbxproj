@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F4A9058F148FEEE600342865 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A9058E148FEEE600342865 /* main.cpp */; };
+		F4A9059C148FEF8000342865 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A90596148FEF8000342865 /* tinystr.cpp */; };
+		F4A9059D148FEF8000342865 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A90598148FEF8000342865 /* tinyxml.cpp */; };
+		F4A9059E148FEF8000342865 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A9059A148FEF8000342865 /* tinyxmlerror.cpp */; };
+		F4A9059F148FEF8000342865 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A9059B148FEF8000342865 /* tinyxmlparser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +30,14 @@
 		F4A9058A148FEEE600342865 /* Labo06-Fietsen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Labo06-Fietsen"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A9058E148FEEE600342865 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F4A90590148FEEE600342865 /* Labo06_Fietsen.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Labo06_Fietsen.1; sourceTree = "<group>"; };
+		F4A90596148FEF8000342865 /* tinystr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinystr.cpp; sourceTree = "<group>"; };
+		F4A90597148FEF8000342865 /* tinystr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinystr.h; sourceTree = "<group>"; };
+		F4A90598148FEF8000342865 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		F4A90599148FEF8000342865 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		F4A9059A148FEF8000342865 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		F4A9059B148FEF8000342865 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		F4A905A0148FEFAA00342865 /* fietsgraaf.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fietsgraaf.xml; sourceTree = "<group>"; };
+		F4A905A1148FEFAA00342865 /* graaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graaf.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,14 @@
 		F4A9058D148FEEE600342865 /* Labo06-Fietsen */ = {
 			isa = PBXGroup;
 			children = (
+				F4A905A0148FEFAA00342865 /* fietsgraaf.xml */,
+				F4A905A1148FEFAA00342865 /* graaf.h */,
+				F4A90596148FEF8000342865 /* tinystr.cpp */,
+				F4A90597148FEF8000342865 /* tinystr.h */,
+				F4A90598148FEF8000342865 /* tinyxml.cpp */,
+				F4A90599148FEF8000342865 /* tinyxml.h */,
+				F4A9059A148FEF8000342865 /* tinyxmlerror.cpp */,
+				F4A9059B148FEF8000342865 /* tinyxmlparser.cpp */,
 				F4A9058E148FEEE600342865 /* main.cpp */,
 				F4A90590148FEEE600342865 /* Labo06_Fietsen.1 */,
 			);
@@ -112,6 +132,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4A9058F148FEEE600342865 /* main.cpp in Sources */,
+				F4A9059C148FEF8000342865 /* tinystr.cpp in Sources */,
+				F4A9059D148FEF8000342865 /* tinyxml.cpp in Sources */,
+				F4A9059E148FEF8000342865 /* tinyxmlerror.cpp in Sources */,
+				F4A9059F148FEF8000342865 /* tinyxmlparser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
